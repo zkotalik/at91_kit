@@ -1,0 +1,10 @@
+*.o
+*.elf
+*.bin
+*~
+*.swp
+dbg/
+ira/
+rel/
+*.out
+zaloha/
