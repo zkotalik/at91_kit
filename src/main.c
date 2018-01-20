@@ -29,6 +29,8 @@ static void prvSetupHardware( void );
  **********************************************************************/
 int main( void )
 {
+
+    prvSetupHardware();
     /* Create one of three tasks. Note that a real application should check
      * the return value of the xTaskCreate() call to ensure the task was
      * created successfully. */

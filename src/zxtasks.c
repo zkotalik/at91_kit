@@ -1,3 +1,5 @@
+#include "FreeRTOS.h"
+#include "task.h"
 /* application includes. */
 #include "zxtasks.h"
 #include "led.h"
@@ -17,10 +19,10 @@ void vTask1( void *pvParameters )
 {
 
    /* Infinited loop */
-    for(;;)
+    for( ;; )
     {
-        ledToggle(GREEN_LED);
-        delay_ms(500);
+        ledToggle( GREEN_LED );
+        vTaskDelay( 500 / portTICK_RATE_MS );
     }
 }
 
@@ -39,10 +41,10 @@ void vTask2( void *pvParameters )
 {
 
         /* Infinited loop */
-    for(;;)
+    for( ;; )
     {
-        ledToggle(YELLOW_LED);
-        delay_ms(800);
+        ledToggle( YELLOW_LED );
+        vTaskDelay( 800 / portTICK_RATE_MS );
     }
 }
 
@@ -61,9 +63,9 @@ void vTask3( void *pvParameters )
 {
 
    /* Infinited loop */
-    for(;;)
+    for( ;; )
     {
-        ledToggle(RED_LED);
-        delay_ms(1200);
+        ledToggle( RED_LED );
+        vTaskDelay( 1200 / portTICK_RATE_MS );
     }
 }

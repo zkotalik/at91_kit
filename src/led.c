@@ -18,8 +18,9 @@ void ledInit(void)
 {
 
     /* Clock on PIOA and PIOB */
+    /*
     *AT91C_PMC_PCER = (1 << AT91C_ID_PIOA) | (1 << AT91C_ID_PIOB);
-
+    */
     /* Turn pin voltage off, maybe this should be done before
      * pins are configured */
     *AT91C_PIOA_CODR = YELLOW_LED | RED_LED;
