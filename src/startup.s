@@ -201,14 +201,14 @@ mck:
 ;@    blt     1b
 
     /* Relocate .data section (copy from RAM to ROM) */
-;@    ldr     r0, =__data_load__
-;@    ldr     r1, =__data_start__
-;@    ldr     r2, =_edata
-;@1:
-;@    cmp     r1, r2
-;@    ldmltia r0!, {r3}
-;@    stmltia r1!, {r3}
-;@    blt     1b
+    ldr     r0, =__data_load__
+    ldr     r1, =__data_start__
+    ldr     r2, =_edata
+1:
+    cmp     r1, r2
+    ldmltia r0!, {r3}
+    stmltia r1!, {r3}
+    blt     1b
 
     /* Clear .bss section (zero init) */
     ldr     r1, =__bss_start__

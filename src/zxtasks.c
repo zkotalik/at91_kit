@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "FreeRTOS.h"
 #include "task.h"
 /* application includes. */
@@ -17,12 +18,19 @@
  **********************************************************************/
 void vTask1( void *pvParameters )
 {
+    portTickType xLastWakeTime;
+
+    /* The xLastWakeTime variable needs to be initiated with the current ticks
+     * count. Note that this is the only time the variable is written to
+     * explicitly. After this xLastWakeTime is updated internally within
+     * vTaskDelayUntil(). */
+    xLastWakeTime = xTaskGetTickCount();
 
    /* Infinited loop */
     for( ;; )
     {
         ledToggle( GREEN_LED );
-        vTaskDelay( 500 / portTICK_RATE_MS );
+        vTaskDelayUntil( &xLastWakeTime, ( 500 / portTICK_RATE_MS ) );
     }
 }
 
@@ -39,12 +47,15 @@ void vTask1( void *pvParameters )
  **********************************************************************/
 void vTask2( void *pvParameters )
 {
+    portTickType xLastWakeTime;
+
+    xLastWakeTime = xTaskGetTickCount();
 
         /* Infinited loop */
     for( ;; )
     {
         ledToggle( YELLOW_LED );
-        vTaskDelay( 800 / portTICK_RATE_MS );
+        vTaskDelayUntil( &xLastWakeTime, ( 800 / portTICK_RATE_MS ) );
     }
 }
 
@@ -61,11 +72,14 @@ void vTask2( void *pvParameters )
  **********************************************************************/
 void vTask3( void *pvParameters )
 {
+    portTickType xLastWakeTime;
+
+    xLastWakeTime = xTaskGetTickCount();
 
    /* Infinited loop */
     for( ;; )
     {
         ledToggle( RED_LED );
-        vTaskDelay( 1200 / portTICK_RATE_MS );
+        vTaskDelayUntil( &xLastWakeTime, ( 1200 / portTICK_RATE_MS ) );
     }
 }
